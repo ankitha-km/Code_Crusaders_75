@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Medicine Locator — Lavender Dream</title>
+
+    <!-- Inter + Tailwind CDN (for rapid prototype utilities) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <script>
+      // Tailwind CDN config (lavender dream palette)
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#0b0f19",
+              glass: "rgba(255,255,255,0.08)",
+              lav1: "#9b5de5",
+              lav2: "#f15bb5",
+              lav3: "#ff7598",
+              lav4: "#7c3aed",
+              mint: "#10b981",
+              sky: "#38bdf8",
+            },
+            boxShadow: {
+              glass: "0 10px 30px rgba(0,0,0,.25)",
+              luxe: "0 1px 0 rgba(255,255,255,.2) inset, 0 20px 40px rgba(155,93,229,.35)"
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Leaflet CSS for map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <style>
+      :root{color-scheme: light dark}
+      html,body,#root{height:100%}
+      body{
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: radial-gradient(1200px 800px at 15% -10%, rgba(155,93,229,.35), transparent 60%),
+                    radial-gradient(1000px 700px at 100% 0%, rgba(241,91,181,.28), transparent 60%),
+                    linear-gradient(180deg, #0b0f19 0%, #121828 100%);
+        color: #e5e7eb;
+      }
+      /* dreamy animated orbs */
+      .orb{
+        position:absolute; width:480px; height:480px; border-radius:50%;
+        filter: blur(60px); opacity:.45; mix-blend-mode: screen; animation: float 18s ease-in-out infinite;
+      }
+      .orb.p1{ background: radial-gradient(circle at 30% 30%, #9b5de5, transparent 60%); left:-180px; top:-120px;}
+      .orb.p2{ background: radial-gradient(circle at 70% 30%, #f15bb5, transparent 60%); right:-160px; top:-140px; animation-delay: -4s;}
+      .orb.p3{ background: radial-gradient(circle at 40% 60%, #38bdf8, transparent 60%); left:20%; bottom:-220px; animation-delay:-8s;}
+      @keyframes float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-24px) } }
+      /* glass panel */
+      .glass{ background: rgba(255,255,255,.06); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.18); }
+      .border-luxe{ border:1px solid rgba(255,255,255,.18); box-shadow: 0 8px 32px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.2) }
+      .grad{ background: linear-gradient(90deg, #9b5de5, #f15bb5, #ff7598); }
+      .grad-text{ background: linear-gradient(90deg, #fef3c7, #f15bb5, #9b5de5); -webkit-background-clip: text; color: transparent; }
+    </style>
+  </head>
+  <body>
+    <div class="orb p1"></div><div class="orb p2"></div><div class="orb p3"></div>
+    <div id="root" class="relative h-full"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
